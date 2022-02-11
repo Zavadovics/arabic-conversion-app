@@ -1,9 +1,11 @@
-import React from 'react';
-// import Button from './Button';
+import React, { useState } from 'react';
 import InputField from './InputField';
 import Result from './Result';
 
 const Home = () => {
+  const [number, setNumber] = useState('');
+  const [result, setResult] = useState('');
+
   return (
     <div className='home'>
       <h1>Arabic number conversion tool</h1>
@@ -12,9 +14,12 @@ const Home = () => {
         of that number
       </h3>
       <div className='inner-container'>
-        <InputField />
-        {/* <Button /> */}
-        <Result />
+        <InputField
+          number={number}
+          setNumber={setNumber}
+          setResult={setResult}
+        />
+        <Result result={result} number={number} />
       </div>
       <p>I hope you had fun :)</p>
     </div>

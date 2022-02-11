@@ -53,19 +53,19 @@ const convertThousands = num => {
       return convertHundreds(Math.floor(num / 1000)) + ' thousand';
     } else if (
       (num.toString().length === 5 &&
-        parseInt(num.toString().slice(0, 3)) % 10 !== 0) ||
+        parseInt(num.toString().slice(0, 4)) % 10 === 0) ||
       (num.toString().length === 4 &&
-        parseInt(num.toString().slice(0, 2)) % 10 !== 0)
+        parseInt(num.toString().slice(0, 2)) % 10 === 0)
     ) {
       return (
         convertHundreds(Math.floor(num / 1000)) +
-        ' thousand ' +
+        ' thousand and ' +
         convertHundreds(num % 1000)
       );
     } else {
       return (
         convertHundreds(Math.floor(num / 1000)) +
-        ' thousand and ' +
+        ' thousand ' +
         convertHundreds(num % 1000)
       );
     }

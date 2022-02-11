@@ -1,18 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import convert from '../helper';
 
-const InputField = () => {
-  const [number, setNumber] = useState('');
-  const [result, setResult] = useState('');
-
+const InputField = ({ number, setNumber, setResult }) => {
   const handleChange = e => {
     setNumber(e.target.value);
   };
 
-  const doTheMagic = e => {
-    console.log('number', typeof number);
+  const doTheMagic = () => {
     setResult(convert(parseInt(number)));
-    console.log('result', result);
   };
 
   return (

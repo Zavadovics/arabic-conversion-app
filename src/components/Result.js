@@ -1,15 +1,10 @@
 import React from 'react';
 
-const Result = () => {
+const Result = ({ result, number }) => {
   return (
     <div className='result-container'>
-      <p>Your result:</p>
-      <p className='result'>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic accusamus
-        ut aliquid, ipsum quaerat placeat facere alias sunt laboriosam quis
-        ipsam nesciunt molestiae incidunt debitis libero, consectetur commodi
-        officiis accusantium.
-      </p>
+      <p>Number {number} written out in English:</p>
+      <p className='result'>{result}</p>
     </div>
   );
 };
