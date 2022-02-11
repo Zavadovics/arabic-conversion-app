@@ -102,4 +102,4 @@ const convert = num => {
   else return convertMillions(num);
 };
 
-console.log(convert(1300420));
+export default convert;
