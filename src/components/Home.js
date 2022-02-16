@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <div className='home'>
-      <h1>Arabic number conversion tool</h1>
+      <h1>Number conversion tool</h1>
       <h3>
         I'm an awesome app that converts numeric input into the English phrase
         of that number

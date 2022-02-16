@@ -1,5 +1,5 @@
 import React from 'react';
-import convert from '../helper';
+import { convert } from '../helper';
 
 const InputField = ({ number, setNumber, setResult }) => {
   const handleChange = e => {

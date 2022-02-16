@@ -97,9 +97,7 @@ const convertTens = num => {
   }
 };
 
-const convert = num => {
+export const convert = num => {
   if (num === 0) return 'zero';
   else return convertMillions(num);
 };
-
-export default convert;
