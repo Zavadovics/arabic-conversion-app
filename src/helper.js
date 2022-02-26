@@ -35,39 +35,62 @@ const tenToNineteen = [
   'eighteen',
   'nineteen',
 ];
+const largeNumbers = ['hundred', 'thousand', 'million'];
 
 let feedback = '';
+
 const convertMillions = num => {
+  const numberString = num.toString();
+
   if (num >= 1000000) {
-    return (
-      convertMillions(Math.floor(num / 1000000)) +
-      ' million ' +
-      convertThousands(num % 1000000)
-    );
+    if (
+      numberString.slice(0, 5) % 10 === 0 ||
+      numberString.slice(0, 6) % 10 === 0
+    ) {
+      return (
+        convertMillions(Math.floor(num / 1000000)) +
+        ' ' +
+        largeNumbers[2] +
+        ' and ' +
+        convertThousands(num % 1000000)
+      );
+    } else {
+      return (
+        convertMillions(Math.floor(num / 1000000)) +
+        ' ' +
+        largeNumbers[2] +
+        ' ' +
+        convertThousands(num % 1000000)
+      );
+    }
   } else {
     return convertThousands(num);
   }
 };
 
 const convertThousands = num => {
+  const numberString = num.toString();
+
   if (num >= 1000) {
     if (num % 1000 === 0) {
-      return convertHundreds(Math.floor(num / 1000)) + ' thousand';
+      return convertHundreds(Math.floor(num / 1000)) + ' ' + largeNumbers[1];
     } else if (
-      (num.toString().length === 5 &&
-        parseInt(num.toString().slice(0, 4)) % 10 === 0) ||
-      (num.toString().length === 4 &&
-        parseInt(num.toString().slice(0, 2)) % 10 === 0)
+      numberString.slice(0, 3) % 10 === 0 ||
+      numberString.slice(0, 4) % 10 === 0
     ) {
       return (
         convertHundreds(Math.floor(num / 1000)) +
-        ' thousand and ' +
+        ' ' +
+        largeNumbers[1] +
+        ' and ' +
         convertHundreds(num % 1000)
       );
     } else {
       return (
         convertHundreds(Math.floor(num / 1000)) +
-        ' thousand ' +
+        ' ' +
+        largeNumbers[1] +
+        ' ' +
         convertHundreds(num % 1000)
       );
     }
@@ -80,7 +103,8 @@ const convertHundreds = num => {
   if (num > 99) {
     return (
       belowTen[Math.floor(num / 100)] +
-      ' hundred' +
+      ' ' +
+      largeNumbers[0] +
       (num % 100 === 0 ? '' : ' and ' + convertTens(num % 100))
     );
   } else {
