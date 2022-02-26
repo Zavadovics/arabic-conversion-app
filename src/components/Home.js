@@ -5,6 +5,7 @@ import Result from './Result';
 const Home = () => {
   const [number, setNumber] = useState('');
   const [result, setResult] = useState('');
+  const [feedback, setFeedback] = useState('');
 
   return (
     <div className='home'>
@@ -18,8 +19,10 @@ const Home = () => {
           number={number}
           setNumber={setNumber}
           setResult={setResult}
+          setFeedback={setFeedback}
         />
         <Result result={result} number={number} />
+        {feedback && <p className='feedback'>{feedback}</p>}
       </div>
       <p>I hope you had fun :)</p>
     </div>

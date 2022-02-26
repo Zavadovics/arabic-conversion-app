@@ -1,13 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Button = () => {
-  const [number, setNumber] = useState('');
-
-  const doTheMagic = e => {
-    //     e.preventDefault();
-    console.log(e.target);
-  };
-
+const Button = ({ doTheMagic }) => {
   return (
     <div className='button' onClick={doTheMagic}>
       Do the magic

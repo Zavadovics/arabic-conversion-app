@@ -10,6 +10,7 @@ const belowTen = [
   'eight',
   'nine',
 ];
+
 const tens = [
   '',
   '',
@@ -35,6 +36,7 @@ const tenToNineteen = [
   'nineteen',
 ];
 
+let feedback = '';
 const convertMillions = num => {
   if (num >= 1000000) {
     return (
@@ -98,6 +100,20 @@ const convertTens = num => {
 };
 
 export const convert = num => {
-  if (num === 0) return 'zero';
-  else return convertMillions(num);
+  if (isNaN(num)) {
+    feedback = 'I need a number to work with :)';
+    return { feedback };
+  }
+  if (num === 0) return { text: 'zero' };
+
+  if (num % 1 !== 0) {
+    feedback = `I don't work well with floats but I've rounded it down for you :)`;
+    num = Math.floor(num);
+    return {
+      text: convertMillions(num),
+      feedback,
+    };
+  } else {
+    return { text: convertMillions(num) };
+  }
 };

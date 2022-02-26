@@ -68,6 +68,10 @@
   background: #43464a;
 }
 
+.feedback {
+  color: rgb(254, 167, 16);
+}
+
 @media screen and (max-width: 480px) {
   .home {
     padding: 0.3rem;

@@ -1,13 +1,16 @@
 import React from 'react';
 import { convert } from '../helper';
+import Button from './Button';
 
-const InputField = ({ number, setNumber, setResult }) => {
+const InputField = ({ number, setNumber, setResult, setFeedback }) => {
   const handleChange = e => {
     setNumber(e.target.value);
   };
 
   const doTheMagic = () => {
-    setResult(convert(parseInt(number)));
+    const result = convert(parseFloat(number));
+    setFeedback(result.feedback);
+    setResult(result.text);
   };
 
   return (
@@ -19,9 +22,7 @@ const InputField = ({ number, setNumber, setResult }) => {
         value={number}
         onChange={handleChange}
       />
-      <div className='button' onClick={doTheMagic}>
-        Do the magic
-      </div>
+      <Button doTheMagic={doTheMagic} />
     </div>
   );
 };
