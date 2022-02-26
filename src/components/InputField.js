@@ -13,6 +13,12 @@ const InputField = ({ number, setNumber, setResult, setFeedback }) => {
     setResult(result.text);
   };
 
+  const handleKeypress = e => {
+    if (e.key === 'Enter') {
+      doTheMagic();
+    }
+  };
+
   return (
     <div className='input-container'>
       <label>Number to be converted:</label>
@@ -21,6 +27,7 @@ const InputField = ({ number, setNumber, setResult, setFeedback }) => {
         type='number'
         value={number}
         onChange={handleChange}
+        onKeyPress={handleKeypress}
       />
       <Button doTheMagic={doTheMagic} />
     </div>
